@@ -1,1 +1,3 @@
-name, date, description
+Name: LAI Wing Yue
+Date: 17th February, 2015.
+Description: Lab 2
