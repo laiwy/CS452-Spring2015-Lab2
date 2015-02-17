@@ -2,6 +2,8 @@
 //Date: 30th January, 2015.
 
 var gl;
+var uTranslation;
+var x=0.0, y=0.0;
 
 window.onload=function init()
 {
@@ -38,31 +40,64 @@ window.onload=function init()
 	gl.vertexAttribPointer(vColor, 3, gl.FLOAT, false, fSize*5, fSize*2);
 	gl.enableVertexAttribArray(vColor);
 
-/*	canvas.addEventListener("keydown", function(event)
+	window.onkeydown=function(event)
 	{
-		var key=String.fromCharCode(event.keyCode);
-		
-		if (key=='w')
+		var key=String.fromCharCode(event.keyCode);	
+
+
+		switch(key)
 		{
-			//up
+			case 'W':y+=0.3;
+
+				if (y<1)
+				{
+					uTranslation=gl.getUniformLocation(program, "uTranslation");
+					gl.uniform4f(uTranslation, x, y, 0.0, 0.0);
+					render();
+				}
+				else
+					y-=0.3;
+				break;
+			case 'A':x-=0.3;
+
+				if (-1<x)
+				{
+					uTranslation=gl.getUniformLocation(program, "uTranslation");
+					gl.uniform4f(uTranslation, x, y, 0.0, 0.0);
+					render();
+				}
+				else
+					x+=0.3;
+				break;
+			case 'S':y-=0.3;
+
+				if (-1<y)
+				{
+					uTranslation=gl.getUniformLocation(program, "uTranslation");
+					gl.uniform4f(uTranslation, x, y, 0.0, 0.0);
+					render();
+				}
+				else
+					y+=0.3;
+				break;
+			case 'D':x+=0.3;
+
+				if (x<1)
+				{
+					uTranslation=gl.getUniformLocation(program, "uTranslation");
+					gl.uniform4f(uTranslation, x, y, 0.0, 0.0);
+					render();
+				}
+				else
+					x-=0.3;
+				break;
+			case '1':uTranslation=gl.getUniformLocation(program, "uTranslation");
+				gl.uniform4f(uTranslation, 0.0, 0.0, 0.0, 0.0);
+				render();
+				x=0.0;
+				y=0.0;
 		}
-		else if (key=='a')
-		{
-			//left
-		}
-		else if (key=='s')
-		{
-			//down
-		}
-		else if (key=='d')
-		{
-			//right
-		}
-		else if (key=='1')
-		{
-			//reset
-		}
-	});*/
+	};
 
 	render();
 };
