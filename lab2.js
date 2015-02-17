@@ -44,7 +44,6 @@ window.onload=function init()
 	{
 		var key=String.fromCharCode(event.keyCode);	
 
-
 		switch(key)
 		{
 			case 'W':y+=0.3;
